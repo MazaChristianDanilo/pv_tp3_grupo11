@@ -1,6 +1,4 @@
-/* src/css/estilos.css */
 
-/* 1. Variables y Reset */
 :root {
   --color-primario: #2c3e50;
   --color-secundario: #3498db;
@@ -54,7 +52,6 @@ body {
   color: var(--color-secundario);
 }
 
-/* 3. Estilos de ListaProyectos (Grid Reutilizable) */
 .project-list {
   max-width: 1000px;
   margin: 2rem auto;
@@ -91,7 +88,6 @@ body {
   color: var(--color-secundario);
 }
 
-/* 4. Estilos del Footer */
 .footer-main {
   background-color: var(--color-primario);
   color: var(--blanco);
@@ -100,7 +96,6 @@ body {
   margin-top: 3rem;
 }
 
-/* 5. Utilidades */
 .container {
   min-height: 100vh;
   display: flex;
@@ -108,5 +103,5 @@ body {
 }
 
 main {
-  flex: 1; /* Empuja el footer hacia abajo si hay poco contenido */
+  flex: 1; 
 }
