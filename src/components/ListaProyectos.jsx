@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import proyectoService from '../services/proyectoService';
-function ListaProyectos() {
+const ListaProyectos = () => {
     const [proyectos, setProyectos] = useState(
         proyectoService.obtenerProyectos()
     );
