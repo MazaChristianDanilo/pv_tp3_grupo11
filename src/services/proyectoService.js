@@ -2,7 +2,7 @@ const proyectoService = (() => {
     let proyectos = [
         {
             id: 1,
-            titulo: "Sistema escolar",
+            titulo: "Sistema escolars",
             categoria: "Desarrollo web",
             estado: "En progreso",
         },
