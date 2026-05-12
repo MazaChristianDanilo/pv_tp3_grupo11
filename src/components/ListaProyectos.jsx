@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import proyectoService from '../services/proyectoService';
+
 const ListaProyectos = () => {
     const [proyectos, setProyectos] = useState(
         proyectoService.obtenerProyectos()
     );
     const [buscado,setBuscado] = useState("")
+
     const [agregaTitulo,setAgregaTitulo] = useState("")
     const [agregaCategoria,setAgregaCategoria] = useState("")
     const [agregaEstado,setAgregaEstado] = useState("")
@@ -31,17 +33,27 @@ const ListaProyectos = () => {
     
     return (
         <main>
-            <label> titulo:</label>
-            <input  onChange={(titulo) => setAgregaTitulo(titulo.target.value)}></input>
-            <label> categoria:</label>
-            <input  onChange={(categoria) => setAgregaCategoria(categoria.target.value)}></input>
-            <label> estado:</label>
-            <input  onChange={(estado) => setAgregaEstado(estado.target.value)}></input>
-            
+            {/*seccion de agregar*/}
+            <section>
+            <input type = "text" placeholder = "titulo del proyecto" onChange={(titulo) => setAgregaTitulo(titulo.target.value)}></input>
+           
+            <input type = "text" placeholder = "categoría" onChange={(categoria) => setAgregaCategoria(categoria.target.value)}></input>
+           
+            <input type = "text" placeholder = "estado" onChange={(estado) => setAgregaEstado(estado.target.value)}></input>
+
             <button onClick = {() => handleAgregar()} >agregar proyecto</button>
-            <label> Proyecto Buscado:</label>
-            <input  onChange={(entrada) => setBuscado(entrada.target.value)}></input>
+
+            </section>
+            
+
+            {/*seccion busqueda de proyecto*/}
+
+            <section>
+            
+            <input type= "text" placeholder = "titulo del proyecto " onChange={(entrada) => setBuscado(entrada.target.value)}></input>
             <button onClick = {() => handleBuscar(buscado)} >buscar proyecto</button>
+            </section>
+
             <h2>Lista de Proyectos</h2>
 
             {proyectos.map(proyecto => (
