@@ -6,6 +6,19 @@ INTEGRANTES
 - Quintar Salim Farid - safaqui00
 - Yurquina Tatiana - TatianaYurquina
 - Torrez Carlos Iván - ivantorrez
+
+El objetivo de este trabajo práctico es realizar una introducción al desarrollo de aplicaciones
+web utilizando React, conceptos clave, estructura básica, uso de componentes, estado y
+hooks.
+El desarrollo consiste en realizar la evolución de la plataforma de “Gestión de Proyectos
+Educativos” de HTML/CSS a React.
+Para realizar la migración es necesario crear un proyecto React usando Vite.
+
+
+En esta parte 2 el foco estará en la comunicación entre componentes mediante el pasaje
+de información (props) y la simplificación del código utilizando desestructuración de
+objetos.
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
