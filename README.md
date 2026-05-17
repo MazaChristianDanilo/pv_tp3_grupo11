@@ -1,3 +1,11 @@
+TRABAJO PRACTICO 3
+
+INTEGRANTES
+
+- Maza Danilo - MazaChristianDanilo 
+- Quintar Salim Farid - safaqui00
+- Yurquina Tatiana - TatianaYurquina
+- Torrez Carlos Iván - ivantorrez
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
