@@ -1,100 +1,79 @@
-import { useState } from "react";
-import ProyectoCard from "./ProyectoCard";
+import { useState } from 'react';
+import proyectoService from '../services/proyectoService';
+import ProyectoCard from './ProyectoCard';
 
-const ListaProyectos = ({
-    proyectos,
-    handleEliminar,
-    handleAgregar,
-    handleBuscar
-}) => {
+const ListaProyectos = () => {
+    const [proyectos, setProyectos] = useState(
+        proyectoService.obtenerProyectos()
+    );
+    const [buscado,setBuscado] = useState("")
 
-    const [agregaTitulo, setAgregaTitulo] = useState("");
-    const [agregaCategoria, setAgregaCategoria] = useState("");
-    const [agregaEstado, setAgregaEstado] = useState("");
-    const [buscado, setBuscado] = useState("");
+    const [agregaTitulo,setAgregaTitulo] = useState("")
+    const [agregaCategoria,setAgregaCategoria] = useState("")
+    const [agregaEstado,setAgregaEstado] = useState("")
 
+    const handleEliminar = (id) => {    
+          proyectoService.eliminarProyecto(id); 
+          setProyectos(proyectoService.obtenerProyectos())
+    };
+    
+    const handleBuscar = (titulo) => {
+        setProyectos(proyectoService.buscarProyecto(titulo))
+       
+    };
+    const handleAgregar = () => {
+        proyectoService.agregarProyecto({
+            id:proyectos.length+1,
+            titulo:agregaTitulo,
+            categoria:agregaCategoria,
+            estado:agregaEstado,
+        }
+        )
+         setProyectos(proyectoService.obtenerProyectos())
+    };
+    
     return (
-
         <main>
-
-            {/* agregar proyecto */}
+            {/*seccion de agregar*/}
             <section>
+            <input type = "text" placeholder = "titulo del proyecto" onChange={(titulo) => setAgregaTitulo(titulo.target.value)}></input>
+           
+            <input type = "text" placeholder = "categoría" onChange={(categoria) => setAgregaCategoria(categoria.target.value)}></input>
+           
+            <input type = "text" placeholder = "estado" onChange={(estado) => setAgregaEstado(estado.target.value)}></input>
 
-                <input
-                    type="text"
-                    placeholder="titulo del proyecto"
-                    onChange={(titulo) =>
-                        setAgregaTitulo(titulo.target.value)
-                    }
-                />
-
-                <input
-                    type="text"
-                    placeholder="categoría"
-                    onChange={(categoria) =>
-                        setAgregaCategoria(categoria.target.value)
-                    }
-                />
-
-                <input
-                    type="text"
-                    placeholder="estado"
-                    onChange={(estado) =>
-                        setAgregaEstado(estado.target.value)
-                    }
-                />
-
-                <button
-                    onClick={() =>
-                        handleAgregar(
-                            agregaTitulo,
-                            agregaCategoria,
-                            agregaEstado
-                        )
-                    }
-                >
-                    agregar proyecto
-                </button>
+            <button onClick = {() => handleAgregar()} >agregar proyecto</button>
 
             </section>
+            
 
-            {/* búsqueda */}
+            {/*seccion busqueda de proyecto*/}
+
             <section>
-
-                <input
-                    type="text"
-                    placeholder="titulo del proyecto"
-                    onChange={(entrada) =>
-                        setBuscado(entrada.target.value)
-                    }
-                />
-
-                <button
-                    onClick={() => handleBuscar(buscado)}
-                >
-                    buscar proyecto
-                </button>
-
+            
+            <input type= "text" placeholder = "titulo del proyecto " onChange={(entrada) => setBuscado(entrada.target.value)}></input>
+            <button onClick = {() => handleBuscar(buscado)} >buscar proyecto</button>
             </section>
 
             <h2>Lista de Proyectos</h2>
 
             {
-                proyectos.map((proyecto) => (
+            
+            proyectos.map((proyecto) => (
 
-                    <ProyectoCard
-                        key={proyecto.id}
-                        proyecto={proyecto}
-                        eliminarProyecto={handleEliminar}
-                        verDetalle={handleBuscar}
-                    />
+            <ProyectoCard
+            key={proyecto.id}
+            proyecto={proyecto}
+            eliminarProyecto={handleEliminar}
+            verDetalle={handleBuscar}
+            />
+            ))
 
-                ))
             }
+            
 
         </main>
-
     );
-};
+}
 
 export default ListaProyectos;
