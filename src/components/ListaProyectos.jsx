@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import proyectoService from '../services/proyectoService';
 import ProyectoCard from './ProyectoCard';
-
+import RegistroActividad from './RegistroActividad';
 const ListaProyectos = () => {
     const [proyectos, setProyectos] = useState(
         proyectoService.obtenerProyectos()
@@ -11,6 +11,7 @@ const ListaProyectos = () => {
     const [agregaTitulo,setAgregaTitulo] = useState("")
     const [agregaCategoria,setAgregaCategoria] = useState("")
     const [agregaEstado,setAgregaEstado] = useState("")
+    const [ultimaModificacion,setUltimaModificacion] = useState("")
 
     const handleEliminar = (id) => {    
           proyectoService.eliminarProyecto(id); 
@@ -31,7 +32,12 @@ const ListaProyectos = () => {
         )
          setProyectos(proyectoService.obtenerProyectos())
     };
-    
+
+    useEffect(() => {
+        const fechaActual = new Date().toLocaleString();
+        setUltimaModificacion(fechaActual);
+    }, [proyectos]);
+
     return (
         <main>
             {/*seccion de agregar*/}
@@ -71,6 +77,7 @@ const ListaProyectos = () => {
 
             }
             
+            <RegistroActividad fecha={ultimaModificacion} />
 
         </main>
     );
