@@ -65,6 +65,11 @@ const ListaProyectos = () => {
     setProyectoSeleccionado(proyecto);
   };
 
+  useEffect(() => {
+    const fechaActual = new Date().toLocaleString();
+    setUltimaModificacion(fechaActual);
+  }, [proyectos]);
+
   if (proyectoSeleccionado) {
     return (
       <DetalleProyecto
@@ -73,10 +78,7 @@ const ListaProyectos = () => {
       />
     );
   }
-  useEffect(() => {
-    const fechaActual = new Date().toLocaleString();
-    setUltimaModificacion(fechaActual);
-  }, [proyectos]);
+  
 
   return (
     <main>
