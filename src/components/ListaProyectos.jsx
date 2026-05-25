@@ -4,7 +4,7 @@ import ProyectoCard from "./ProyectoCard.jsx";
 import DetalleProyecto from "./DetalleProyecto.jsx";
 import RegistroActividad from "./RegistroActividad.jsx";
 import FormularioProyecto from "./FormularioProyecto.jsx";
-
+import "styles.css";
 const ListaProyectos = () => {
   const [proyectos, setProyectos] = useState(
     proyectoService.obtenerProyectos(),

@@ -1,3 +1,4 @@
+import "styles.css";
 const DetalleProyecto = ({ proyecto,volver }) => {
   const { recursos, detalle, equipo } = proyecto;
   return (

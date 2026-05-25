@@ -21,7 +21,7 @@ body {
   line-height: 1.6;
 }
 
-/* 2. Estilos del Header y Nav */
+
 .header-main {
   background-color: var(--color-primario);
   color: var(--blanco);

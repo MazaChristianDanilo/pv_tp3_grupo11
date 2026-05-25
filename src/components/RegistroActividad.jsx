@@ -6,7 +6,7 @@ const RegistroActividad = ({ fecha }) => {
         </section>
     );
 };           
-
+import "styles.css";
 import { useEffect, useRef, useState } from "react";
 import RegistroActividad from "./RegistroActividad";
 

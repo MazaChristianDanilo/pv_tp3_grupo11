@@ -1,3 +1,4 @@
+import "styles.css";
 import { useState } from "react";
 const FormularioProyecto = ({ onAgregar }) => {
   const [recursos, setRecursos] = useState({

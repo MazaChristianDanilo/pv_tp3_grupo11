@@ -1,3 +1,4 @@
+import "styles.css";
 import RegistroActividad from "./RegistroActividad";
 const ProyectoCard = ({ proyecto, eliminarProyecto, verDetalle }) => {
     const { id, titulo, categoria, estado } = proyecto;
