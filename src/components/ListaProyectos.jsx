@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import proyectoService from "../services/proyectoService";
 import ProyectoCard from "./ProyectoCard.jsx";
 import DetalleProyecto from "./DetalleProyecto.jsx";
@@ -11,10 +11,12 @@ const ListaProyectos = () => {
   );
   const [buscado, setBuscado] = useState("");
 
-
   const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
 
-  const [ultimaModificacion, setUltimaModificacion] = useState("");
+  const [ultimaModificacion, setUltimaModificacion] = useState(null);
+
+  const primerRenderizado = useRef(true);
+  const cambioReal = useRef(true);
 
   const handleEliminar = (id) => {
     proyectoService.eliminarProyecto(id);
@@ -23,9 +25,10 @@ const ListaProyectos = () => {
 
   const handleBuscar = (titulo) => {
     setProyectos(proyectoService.buscarProyecto(titulo));
+    cambioReal.current = false;
   };
 
-  const handleAgregadoNuevo = (nuevo)=> {
+  const handleAgregadoNuevo = (nuevo) => {
     proyectoService.agregarProyecto(nuevo);
     setProyectos(proyectoService.obtenerProyectos());
   };
@@ -35,6 +38,14 @@ const ListaProyectos = () => {
   };
 
   useEffect(() => {
+    if (primerRenderizado.current) {
+      primerRenderizado.current = false;
+      return;
+    }
+    if(cambioReal.current==false){
+      cambioReal.current = true;
+      return;
+    }
     const fechaActual = new Date().toLocaleString();
     setUltimaModificacion(fechaActual);
   }, [proyectos]);
@@ -48,10 +59,9 @@ const ListaProyectos = () => {
     );
   }
 
-
   return (
     <main>
-      <FormularioProyecto onAgregar={handleAgregadoNuevo}/>
+      <FormularioProyecto onAgregar={handleAgregadoNuevo} />
 
       {/*seccion busqueda de proyecto*/}
 
