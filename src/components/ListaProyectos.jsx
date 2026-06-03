@@ -84,7 +84,9 @@ const ListaProyectos = () => {
           verDetalle={handleVerDetalle}
         />
       ))}
-      <RegistroActividad fecha={ultimaModificacion} />
+      {
+        ultimaModificacion && <RegistroActividad fecha={ultimaModificacion} />
+      }
     </main>
   );
 };
