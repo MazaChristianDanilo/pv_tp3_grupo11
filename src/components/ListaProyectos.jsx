@@ -16,6 +16,7 @@ const ListaProyectos = () => {
   const [ultimaModificacion, setUltimaModificacion] = useState(null);
 
   const primerRenderizado = useRef(true);
+  const segundoRenderizado = useRef(true);
   const cambioReal = useRef(true);
 
   const handleEliminar = (id) => {
@@ -38,16 +39,27 @@ const ListaProyectos = () => {
   };
 
   useEffect(() => {
+    console.log('se ejecuto', {
+        primerRenderizado: primerRenderizado.current,
+        segundoRenderizado: segundoRenderizado.current,
+        cambioReal: cambioReal.current
+    });
     if (primerRenderizado.current) {
       primerRenderizado.current = false;
       return;
+    } else {
+      if (segundoRenderizado.current) {
+        segundoRenderizado.current = false;
+        return;
+      }
     }
-    if(cambioReal.current==false){
+    if (cambioReal.current == false) {
       cambioReal.current = true;
       return;
     }
     const fechaActual = new Date().toLocaleString();
     setUltimaModificacion(fechaActual);
+    
   }, [proyectos]);
 
   if (proyectoSeleccionado) {
@@ -84,9 +96,7 @@ const ListaProyectos = () => {
           verDetalle={handleVerDetalle}
         />
       ))}
-      {
-        ultimaModificacion && <RegistroActividad fecha={ultimaModificacion} />
-      }
+      {ultimaModificacion && <RegistroActividad fecha={ultimaModificacion} />}
     </main>
   );
 };
