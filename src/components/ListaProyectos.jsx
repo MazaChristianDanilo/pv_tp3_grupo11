@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import proyectoService from "../services/proyectoService";
 import ProyectoCard from "./ProyectoCard.jsx";
-import DetalleProyecto from "./DetalleProyecto.jsx";
 import RegistroActividad from "./RegistroActividad.jsx";
 import FormularioProyecto from "./FormularioProyecto.jsx";
 
@@ -11,11 +10,11 @@ const ListaProyectos = () => {
   );
   const [buscado, setBuscado] = useState("");
 
-  const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
 
   const [ultimaModificacion, setUltimaModificacion] = useState(null);
 
   const primerRenderizado = useRef(true);
+  const segundoRenderizado = useRef(true);
   const cambioReal = useRef(true);
 
   const handleEliminar = (id) => {
@@ -33,31 +32,25 @@ const ListaProyectos = () => {
     setProyectos(proyectoService.obtenerProyectos());
   };
 
-  const handleVerDetalle = (proyecto) => {
-    setProyectoSeleccionado(proyecto);
-  };
-
   useEffect(() => {
     if (primerRenderizado.current) {
       primerRenderizado.current = false;
       return;
+    } else {
+      if (segundoRenderizado.current) {
+        segundoRenderizado.current = false;
+        return;
+      }
     }
-    if(cambioReal.current==false){
+    if (cambioReal.current == false) {
       cambioReal.current = true;
       return;
     }
     const fechaActual = new Date().toLocaleString();
     setUltimaModificacion(fechaActual);
+    
   }, [proyectos]);
 
-  if (proyectoSeleccionado) {
-    return (
-      <DetalleProyecto
-        proyecto={proyectoSeleccionado}
-        volver={setProyectoSeleccionado}
-      />
-    );
-  }
 
   return (
     <main>
@@ -81,10 +74,10 @@ const ListaProyectos = () => {
           key={proyecto.id}
           proyecto={proyecto}
           eliminarProyecto={handleEliminar}
-          verDetalle={handleVerDetalle}
+          
         />
       ))}
-      <RegistroActividad fecha={ultimaModificacion} />
+      {ultimaModificacion && <RegistroActividad fecha={ultimaModificacion} />}
     </main>
   );
 };

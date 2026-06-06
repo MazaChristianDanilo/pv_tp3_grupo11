@@ -1,5 +1,11 @@
-const DetalleProyecto = ({ proyecto,volver }) => {
+import { useNavigate, useParams } from "react-router-dom";
+import proyectoService from "../services/proyectoService";
+const DetalleProyecto = () => {
+  const {id} = useParams();
+  console.log(id);
+  const proyecto = proyectoService.obtenerProyectoPorId(Number(id));
   const { recursos, detalle, equipo } = proyecto;
+  const navigate = useNavigate();
   return (
     <div>
       <h1>Detalle del Proyecto</h1>
@@ -21,7 +27,7 @@ const DetalleProyecto = ({ proyecto,volver }) => {
       ) )
       }
       </ul>
-      <button onClick={() =>volver(null)}>volver</button>
+      <button onClick={() =>navigate(-1)}>volver</button>
 
     </div>
   );
