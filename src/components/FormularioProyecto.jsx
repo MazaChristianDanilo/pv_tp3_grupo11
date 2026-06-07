@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { TextField, Button, Paper, Stack, Typography } from "@mui/material";
 const FormularioProyecto = ({ onAgregar }) => {
   const [recursos, setRecursos] = useState({
     pdf: "",
@@ -39,94 +40,159 @@ const FormularioProyecto = ({ onAgregar }) => {
       ],
     });
   };
-  return (
-    <div>
-      {/*seccion de agregar*/}
-      <section>
-        <input
-          type="text"
-          placeholder="titulo del proyecto"
-          onChange={(e) =>
-            setFormulario({ ...formulario, titulo: e.target.value })
-          }
-        ></input>
+return (
+  <Paper sx={{ p: 4, mt: 3 }}>
+    <Typography variant="h4" gutterBottom>
+      Nuevo Proyecto
+    </Typography>
 
-        <input
-          type="text"
-          placeholder="categoría"
-          onChange={(e) =>
-            setFormulario({ ...formulario, categoria: e.target.value })
-          }
-        ></input>
+    <Stack spacing={2}>
 
-        <input
-          type="text"
-          placeholder="estado"
-          onChange={(e) =>
-            setFormulario({ ...formulario, estado: e.target.value })
-          }
-        ></input>
-        <input
-          type="text"
-          placeholder="detalles del proyecto"
-          onChange={(detalle) => setDetalle(detalle.target.value)}
-        ></input>
-        {/* Recursos */}
-        <input
-          type="text"
-          placeholder="URL del PDF"
-          onChange={(p) => setRecursos({ ...recursos, pdf: p.target.value })}
-        ></input>
-        <input
-          type="text"
-          placeholder="URL del Drive"
-          onChange={(d) => setRecursos({ ...recursos, drive: d.target.value })}
-        ></input>
-        <input
-          type="text"
-          placeholder="URL del GitHub"
-          onChange={(g) => setRecursos({ ...recursos, github: g.target.value })}
-        ></input>
+      <TextField
+        label="Título del Proyecto"
+        onChange={(e) =>
+          setFormulario({
+            ...formulario,
+            titulo: e.target.value,
+          })
+        }
+      />
 
-        {/* Equipo */}
-        <input
-          type="text"
-          placeholder="Integrente del Equipo "
-          onChange={(u) => setEquipo({ ...equipo, nombre1: u.target.value })}
-        ></input>
-        <input
-          type="text"
-          placeholder="Rol en el Equipo "
-          onChange={(ru) => setEquipo({ ...equipo, rol1: ru.target.value })}
-        ></input>
-        <input
-          type="text"
-          placeholder="Integrente del Equipo "
-          onChange={(d) => setEquipo({ ...equipo, nombre2: d.target.value })}
-        ></input>
+      <TextField
+        label="Categoría"
+        onChange={(e) =>
+          setFormulario({
+            ...formulario,
+            categoria: e.target.value,
+          })
+        }
+      />
 
-        <input
-          type="text"
-          placeholder="Rol en el Equipo "
-          onChange={(rd) => setEquipo({ ...equipo, rol2: rd.target.value })}
-        ></input>
+      <TextField
+        label="Estado"
+        onChange={(e) =>
+          setFormulario({
+            ...formulario,
+            estado: e.target.value,
+          })
+        }
+      />
 
-        <input
-          type="text"
-          placeholder="Integrente del Equipo "
-          onChange={(t) => setEquipo({ ...equipo, nombre3: t.target.value })}
-        ></input>
+      <TextField
+        label="Detalle del Proyecto"
+        multiline
+        rows={3}
+        onChange={(e) => setDetalle(e.target.value)}
+      />
 
-        <input
-          type="text"
-          placeholder="Rol en el Equipo "
-          onChange={(rt) => setEquipo({ ...equipo, rol3: rt.target.value })}
-        ></input>
+      <Typography variant="h6">
+        Recursos
+      </Typography>
 
-        <button onClick={() => handleAgregar()}>agregar proyecto</button>
-      </section>
-    </div>
-  );
+      <TextField
+        label="URL del PDF"
+        onChange={(e) =>
+          setRecursos({
+            ...recursos,
+            pdf: e.target.value,
+          })
+        }
+      />
+
+      <TextField
+        label="URL del Drive"
+        onChange={(e) =>
+          setRecursos({
+            ...recursos,
+            drive: e.target.value,
+          })
+        }
+      />
+
+      <TextField
+        label="URL de GitHub"
+        onChange={(e) =>
+          setRecursos({
+            ...recursos,
+            github: e.target.value,
+          })
+        }
+      />
+
+      <Typography variant="h6">
+        Equipo de Trabajo
+      </Typography>
+
+      <TextField
+        label="Integrante 1"
+        onChange={(e) =>
+          setEquipo({
+            ...equipo,
+            nombre1: e.target.value,
+          })
+        }
+      />
+
+      <TextField
+        label="Rol Integrante 1"
+        onChange={(e) =>
+          setEquipo({
+            ...equipo,
+            rol1: e.target.value,
+          })
+        }
+      />
+
+      <TextField
+        label="Integrante 2"
+        onChange={(e) =>
+          setEquipo({
+            ...equipo,
+            nombre2: e.target.value,
+          })
+        }
+      />
+
+      <TextField
+        label="Rol Integrante 2"
+        onChange={(e) =>
+          setEquipo({
+            ...equipo,
+            rol2: e.target.value,
+          })
+        }
+      />
+
+      <TextField
+        label="Integrante 3"
+        onChange={(e) =>
+          setEquipo({
+            ...equipo,
+            nombre3: e.target.value,
+          })
+        }
+      />
+
+      <TextField
+        label="Rol Integrante 3"
+        onChange={(e) =>
+          setEquipo({
+            ...equipo,
+            rol3: e.target.value,
+          })
+        }
+      />
+
+      <Button
+        variant="contained"
+        onClick={handleAgregar}
+      >
+        Agregar Proyecto
+      </Button>
+
+    </Stack>
+  </Paper>
+);
 };
 
 export default FormularioProyecto;
