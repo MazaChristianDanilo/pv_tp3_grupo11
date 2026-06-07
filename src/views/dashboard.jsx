@@ -29,7 +29,7 @@ const Dashboard = () => {
         
         <Grid container spacing={3}>
           {metricas.map((metrica) => (
-            <Grid item xs={12} sm={4} key={metrica.id}>
+            <Grid size={{ xs: 12, sm: 4 }} key={metrica.id}>
               <Card elevation={2} sx={{ borderLeft: `6px solid ${metrica.color}` }}>
                 <CardContent>
                   <Typography variant="subtitle1" color="text.secondary" gutterBottom>

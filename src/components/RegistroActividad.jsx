@@ -1,10 +1,11 @@
+import Alert from "@mui/material/Alert";
+
 const RegistroActividad = ({ fecha }) => {
-    return (
-        <section>
-            <h2>Registro de Actividad</h2>
-            <p>Última actualización de la lista: {fecha}hs. </p>
-        </section>
-    );
+  return (
+    <Alert severity="info" sx={{ mb: 2 }}>
+      Última actualización de la lista: {fecha} hs.
+    </Alert>
+  );
 };
 
 export default RegistroActividad;
