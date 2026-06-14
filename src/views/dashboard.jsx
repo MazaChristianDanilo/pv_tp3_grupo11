@@ -4,7 +4,7 @@ import { Container, Box, Typography, Paper, Grid, Card, CardContent } from '@mui
 const Dashboard = () => {
   // Datos simulados de las métricas
   const metricas = [
-    { id: 1, titulo: 'Total de Proyectos', valor: '12', color: '#1976d2' },
+    { id: 1, titulo: 'Total de Proyectos', valor: '12', color: '#81d4fa' },
     { id: 2, titulo: 'Proyectos en Curso', valor: '5', color: '#2e7d32' },
     { id: 3, titulo: 'Tareas Pendientes', valor: '8', color: '#ed6c02' },
   ];

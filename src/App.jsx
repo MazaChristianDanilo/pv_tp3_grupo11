@@ -7,9 +7,11 @@ import DetalleProyecto from './components/DetalleProyecto';
 import {Route,BrowserRouter as Router, Routes,Navigate} from 'react-router-dom';
 import Dashboard from './views/Dashboard';
 import PerfilUsuario from './views/PerfilUsuario';
+import {UsuarioProvider} from "./context/UsuarioContext"
 
 const App = () => {
     return (
+      <UsuarioProvider>
       <Router>
         <>
           <Header />
@@ -25,6 +27,7 @@ const App = () => {
           <Footer />
         </>
       </Router>
+      </UsuarioProvider>
       );
     };
 
